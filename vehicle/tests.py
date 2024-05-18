@@ -38,8 +38,8 @@ class VehicleTestCase(APITestCase):
         """Тестирование вывода списка машин"""
 
         Car.objects.create(
-            title="List test",
-            description="List test"
+            title="Listtest",
+            description="Listtest"
         )
 
         response = self.client.get(
@@ -53,5 +53,5 @@ class VehicleTestCase(APITestCase):
 
         self.assertEqual(
             response.json(),
-            {'id': 1, 'milage': [], 'title': 'List test', 'description': 'List test', 'owner': None}
+            {'id': 2, 'milage': [], 'title': 'Listtest', 'description': 'Listtest', 'owner': None}
         )
