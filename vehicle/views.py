@@ -11,12 +11,14 @@ from vehicle.serializers import CarSerializer, MilageSerializers, MotoSerializer
 
 
 class CarViewSet(viewsets.ModelViewSet):
+    """Класс на CRUD для автомобиля"""
     serializer_class = CarSerializer
     queryset = Car.objects.all()
     permission_classes = [AllowAny]
 
 
 class MotoCreateAPIView(generics.CreateAPIView):
+    """Класс на создание мотоцикла"""
     serializer_class = MotoCreateSerializer
     permission_classes = [IsAuthenticated]
 
@@ -27,6 +29,7 @@ class MotoCreateAPIView(generics.CreateAPIView):
 
 
 class MotoListAPIView(generics.ListAPIView):
+    """Класс на просмотр списка мотоциклов"""
     serializer_class = MotoSerializer
     queryset = Moto.objects.all()
     pagination_class = VehiclePaginator
@@ -38,12 +41,14 @@ class MotoRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class MotoUpdateAPIView(generics.UpdateAPIView):
+    """Класс на изменение мотоцикла"""
     serializer_class = MotoSerializer
     queryset = Moto.objects.all()
     permission_classes = [IsOwnerOrStaff]
 
 
 class MotoDestroyAPIView(generics.DestroyAPIView):
+    """Класс на удаление мотоцикла"""
     queryset = Moto.objects.all()
 
 
