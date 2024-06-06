@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+from datetime import timedelta
+
 import environ
 from pathlib import Path
 
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     "corsheaders",
+    'django_celery_beat',
 
     'vehicle',
     'users',
@@ -160,3 +163,14 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=90),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+CUR_API_URL = 'https://api.currencyapi.com/'
+CUR_API_KEY = env('CUR_KEY')
+
+CELERY_BROKER_URL = env('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND')
